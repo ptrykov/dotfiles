@@ -47,7 +47,7 @@ Bundle 'larssmit/vim-getafe'
 Bundle 'telamon/vim-color-github'
 Bundle 'TechnoGate/janus-colors'
 Bundle 'vim-scripts/molokai'
-Bundle 'vim-scripts/Color-Sampler-Pack'
+Bundle 'vim-scripts/Colour-Sampler-Pack'
 Bundle 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
