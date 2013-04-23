@@ -20,7 +20,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'garbas/vim-snipmate'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-Bundle 'honza/snipmate-snippets' 
+Bundle 'honza/vim-snippets' 
 Bundle 'rgarver/Kwbd.vim'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
