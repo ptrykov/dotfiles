@@ -48,14 +48,13 @@ Bundle 'telamon/vim-color-github'
 Bundle 'TechnoGate/janus-colors'
 Bundle 'vim-scripts/molokai'
 Bundle 'vim-scripts/Colour-Sampler-Pack'
+Bundle 'vim-scripts/grep.vim'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
 
 " vim-scripts repos
 Bundle 'closetag.vim'
-
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-" ...
 
 filetype plugin indent on     " required! 
 "
@@ -158,7 +157,8 @@ set directory=~/.vim/_temp/      " where to put swap files.
 "" GUI options
 ""
 if has("gui_macvim") && has("gui_running")
-  set guifont=Monaco:h13
+  "set guifont=Monaco:h13
+  set guifont=Droid\ Sans\ Mono:h12
 else
   set guifont=Droid\ Sans\ Mono\ 13
 endif
@@ -395,6 +395,12 @@ nmap <C-W>! :Kwbd
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=0
 let g:syntastic_auto_loc_list=2
+
+"CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 "Show tagbar
 map <Leader>rt :TagbarToggle<CR>
