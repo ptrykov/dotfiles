@@ -35,12 +35,13 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'pangloss/vim-javascript'
 Bundle "kchmck/vim-coffee-script"
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
+"Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-git'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'skwp/vim-rspec'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'jtratner/vim-flavored-markdown'
 
 "Colors
 Bundle 'larssmit/vim-getafe'
@@ -204,8 +205,11 @@ if has("autocmd")
   " some reason
 
   " Make sure all mardown files have the correct filetype set and setup wrapping
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
-
+  "au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
+  augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  augroup END
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
 
@@ -412,4 +416,7 @@ map <leader>zw :ZoomWin<CR>
 map <leader>tv :vsp <CR>:exec("tj ".expand("<cword>"))<CR>
 map <leader>tt :tab split<CR>:exec("tj ".expand("<cword>"))<CR>
 map <C-CR> <C-W>gf
-map <F10> :!ctags -f ./tmp/tags --append=yes -R --langmap="ruby:+.rake.builder.rjs" --languages=-javascript `rbenv prefix`
+map <F10> :!/usr/local/bin/ctags -f ./.tags --append=yes -R --langmap="ruby:+.rake.builder.rjs" --languages=-javascript ./
+map <leader>ag :Ag
+set tags=.tags
+let NERDTreeWinSize=26
