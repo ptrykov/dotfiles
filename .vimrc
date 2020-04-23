@@ -2,75 +2,74 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 " let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+" required!
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'ap/vim-css-color'
+Plugin 'sjl/gundo.vim'
+Plugin 'vim-scripts/ZoomWin'
+Plugin 'mhinz/vim-signify'
+Plugin 'darfink/vim-plist'
+Plugin 'xolox/vim-misc'
 
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-rails'  
-Bundle 'tpope/vim-endwise'  
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'garbas/vim-snipmate'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle 'honza/vim-snippets' 
-Bundle 'rgarver/Kwbd.vim'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'jeetsukumaran/vim-buffergator'
-Bundle 'ap/vim-css-color'
-Bundle 'mattn/gist-vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'vim-scripts/ZoomWin'
-
+"Plugin 'xolox/vim-easytags'
+Plugin 'ludovicchabant/vim-gutentags'
 "Langs
-Bundle 'pangloss/vim-javascript'
-Bundle "kchmck/vim-coffee-script"
-Bundle 'tpope/vim-haml'
-"Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-git'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'skwp/vim-rspec'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'jtratner/vim-flavored-markdown'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-git'
+Plugin 'skwp/vim-rspec'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-dispatch'
+Plugin 'jimenezrick/vimerl'
+Plugin 'pearofducks/ansible-vim'
 
 "Colors
-Bundle 'larssmit/vim-getafe'
-Bundle 'telamon/vim-color-github'
-Bundle 'TechnoGate/janus-colors'
-Bundle 'vim-scripts/molokai'
-Bundle 'vim-scripts/Colour-Sampler-Pack'
-Bundle 'vim-scripts/grep.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
+Plugin 'larssmit/vim-getafe'
+Plugin 'vim-scripts/grep.vim'
+Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'DAddYE/soda.vim'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rakr/vim-one'
+
+Plugin 'fatih/vim-go'
 
 " vim-scripts repos
-Bundle 'closetag.vim'
-
-filetype plugin indent on     " required! 
+Plugin 'closetag.vim'
+Plugin 'nginx.vim'
+Plugin 'leafgarland/typescript-vim'
+call vundle#end()
+filetype plugin indent on     " required!
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-""
-"" Basic Setup
-""
+" NOTE: comments after Plugin command are not allowed
 
 set number            " Show line numbers
 set ruler             " Show line and column number
@@ -82,7 +81,7 @@ set fileformat=unix
 set ffs=unix,mac,dos
 set showcmd           "the bottom line will show you information about the current command going on
 set showmatch         "highlights the matching braces|brackets|parens when the cursor is on a bracket
-set ls=2              "This makes Vim show a status line even when only one window is shown 
+set ls=2              "This makes Vim show a status line even when only one window is shown
 set confirm
 set visualbell
 set hidden            "enable unsaved buffers
@@ -158,39 +157,31 @@ set directory=~/.vim/_temp/      " where to put swap files.
 "" GUI options
 ""
 if has("gui_macvim") && has("gui_running")
-  "set guifont=Monaco:h13
-  set guifont=Droid\ Sans\ Mono:h12
+  set macligatures
+  set guifont=Fira\ Code\ Retina:h12
 else
-  set guifont=Droid\ Sans\ Mono\ 13
+  "set guifont=Droid\ Sans\ Mono\ 11
+  set guifont=Source\ Code\ Pro\ Medium:11
 endif
-set guioptions=fatige "Tm "see help for more options
+set guioptions=ftige "Tm "see help for more options
+
 if has('gui_running')
-  set bg=light
-  colorscheme solarized
+  set bg=dark
+  colorscheme one
 else
-  colorscheme molokai
+  set bg=dark
+  colorscheme one
 endif
 
 "Gist prefs
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
-let g:gist_browser_command = 'chromium %URL% &'
+let g:gist_browser_command = 'safari %URL% &'
 let g:gist_show_privates = 1
-"let g:github_user = 
-"let g:github_token = 
-
-"Statusline
-set statusline=%<\ %f\ lines:%L\ %m%r%y\ %{fugitive#statusline()}\ %=%-14.(format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ l,c=%l,%c%V\ %P%)
-
-" Start the status line
-"set statusline=%f\ %m\ %r
-"set statusline+=Line:%l/%L[%p%%]
-"set statusline+=Col:%v
-"set statusline+=Buf:#%n
-"set statusline+=[%b][0x%B]
-
-
+"
+"let g:github_user =
+"let g:github_token =
 
 ""
 "" File types
@@ -200,16 +191,10 @@ if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make setlocal noexpandtab
 
-  " This actually might be confusing, but the plugin +ruby+ already does
-  " this, so we want to do it only if the plugin +ruby+ is disabled for
-  " some reason
+  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
+  autocmd FileType ruby compiler ruby
+  autocmd Filetype erlang setlocal omnifunc=erlang_complete#Complete
 
-  " Make sure all mardown files have the correct filetype set and setup wrapping
-  "au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
-  augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-  augroup END
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
 
@@ -228,12 +213,8 @@ endif
 
 cmap w!! %!sudo tee > /dev/null %
 
-nmap <silent> <Leader>ct :CommandT<CR>
-
 nmap <C-n> :tabnew<CR>
 imap <C-n> <Esc>:tabnew<CR>a
-nmap <D-n> :tabnew<CR>
-imap <D-n> <Esc>:tabnew<CR>a
 
 "NERD Tree
 map <F2> <ESC>:NERDTreeToggle<CR>
@@ -241,11 +222,10 @@ nmap <F2> <ESC>:NERDTreeToggle<CR>
 imap <F2> <ESC>:NERDTreeToggle<CR>i
 
 "Clipboard
-vmap <C-c> "+yi
-imap <C-v> <Esc>"+p
-nmap <C-v> "+p
 
-
+"vmap <C-c> "+yi
+"imap <C-v> <Esc>"+p
+"nmap <C-v> "+p
 
 ""
 "" Janus mappings
@@ -278,9 +258,6 @@ map <leader>et :tabe %%
 
 " Swap two words
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
-
-" Underline the current line with '='
-nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
 if has("gui_macvim") && has("gui_running")
   " Map command-[ and command-] to indenting or outdenting
@@ -344,7 +321,7 @@ else
 
   imap <A-]> <Esc>>>i
   imap <A-[> <Esc><<i
- 
+
   " Bubble single lines
   nmap <C-Up> [e
   nmap <C-Down> ]e
@@ -356,10 +333,6 @@ else
   vmap <C-Down> ]egv
   vmap <C-k> [egv
   vmap <C-j> ]egv
-
-  " Make shift-insert work like in Xterm
-  map <S-Insert> <MiddleMouse>
-  map! <S-Insert> <MiddleMouse>
 
   " Map Control-# to switch tabs
   map  <C-0> 0gt
@@ -389,22 +362,18 @@ map <leader>/ :NERDCommenterToggle<CR>
 imap <leader>/ <Esc>:NERDCommenterToggle<CR>
 
 "Gundo window
-map <F5> :Gundotoggle<CR>
-imap <F5> <Esc>:Gundotoggle<CR>
-
-"Kill all :-)
-nmap <C-W>! :Kwbd
+map <F5> :GundoToggle<CR>
+imap <F5> <Esc>:GundoToggle<CR>
 
 "Syntastic prefs
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=0
-let g:syntastic_auto_loc_list=2
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 "CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['autoignore']
 
 "Show tagbar
 map <Leader>rt :TagbarToggle<CR>
@@ -415,8 +384,21 @@ map <leader>zw :ZoomWin<CR>
 "CTAGS Jump
 map <leader>tv :vsp <CR>:exec("tj ".expand("<cword>"))<CR>
 map <leader>tt :tab split<CR>:exec("tj ".expand("<cword>"))<CR>
+map <leader>gt :exec("tj ".expand("<cword>"))<CR>
 map <C-CR> <C-W>gf
-map <F10> :!/usr/local/bin/ctags -f ./.tags --append=yes -R --langmap="ruby:+.rake.builder.rjs" --languages=-javascript ./
-map <leader>ag :Ag
-set tags=.tags
-let NERDTreeWinSize=26
+"map <F10> :!ctags -f ./tmp/tags --append=yes -R --langmap="ruby:+.rake.builder.rjs" --languages=-javascript .
+"let g:easytags_cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+let g:gutentags_cache_dir='./tmp/'
+
+let g:airline_theme='one'
+let g:airline#extensions#gutentags#enabled = 1
+
+"set tags=./tags
+"let g:easytags_dynamic_files = 1
+let g:ag_prg='ag -S --nocolor --nogroup --column --ignore node_modules --ignore "public/"'
+
+"Search highlight
+nnoremap <silent> <F3> :nohlsearch<Bar>:echo<CR>
+
+" vim-go go imports
+let g:go_fmt_command = "goimports"
